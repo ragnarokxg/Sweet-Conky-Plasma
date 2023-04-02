@@ -1,5 +1,5 @@
-# SweetDarkConkyRevisited
-Paste the SweetDarkConky folder into your .conky folder.
+# Sweet-Conky-Plasma
+Paste the Sweet-Conky-Plasma folder into your .conky folder.
 
 copy fonts from fonts folder into your .fonts folder
 
