@@ -14,7 +14,7 @@ no_buffers yes
 # - Text settings - #
 #####################
 use_xft yes
-xftfont Fira Book:normal:size=10
+xftfont Fira Book:normal:size=9
 override_utf8_locale yes
 text_buffer_size 2048
 
@@ -23,12 +23,12 @@ text_buffer_size 2048
 #############################
 own_window yes
 own_window_type normal
-own_window_transparent yes
+own_window_transparent no
 own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
-own_window_argb_visual no
-own_window_argb_value 0
+own_window_argb_visual yes
+own_window_argb_value 128
 own_window_colour 000000
-minimum_size 300 360
+minimum_size 300 300
 
 alignment middle_right
 gap_x 20
@@ -64,48 +64,48 @@ ${goto 10}Time:${color2}${alignr 10}${time %I}:${time %M %p}${color}
 ${color4}${font ConkySymbols:size=14}b${font} Network» $hr${color}
 
 ${goto 10}Host:${color2}${alignr 10}${exec hostname}${color}
-${goto 10}Network SSID: ${color2}${alignr 10}${wireless_essid wlp4s0}${color}
-${goto 10}Signal:${alignr 10}${color6}${wireless_link_qual_perc wlp4s0} %${color}
+${goto 10}Network SSID: ${color2}${alignr 10}${wireless_essid wlp3s0}${color}
+${goto 10}Signal:${alignr 10}${color6}${wireless_link_qual_perc wlp3s0} %${color}
 
 ${color4}${goto 10}${stippled_hr}${color}
 
-${goto 10}Internal IP: ${color2}${alignr 10}${addr wlp4s0}${color}
+${goto 10}Internal IP: ${color2}${alignr 10}${addr wlp3s0}${color}
 ${goto 10}External IP: ${color2}${alignr 10}${exec curl ipinfo.io/ip}${color}
 
 ${color4}${goto 10}${stippled_hr}${color}
 
-${goto 10}Upload Speed:${alignr 10}${color6}${upspeed wlp4s0}${color} ${color5}${upspeedgraph wlp4s0 10,120 fc8c3b c6396b -t}${color}
-${goto 10}Down Speed:${alignr 10}${color6}${downspeed wlp4s0}${color} ${color5}${downspeedgraph wlp4s0 10,120 fc8c3b c6396b -t}${color}
+${goto 10}Upload Speed:${alignr 10}${color6}${upspeed wlp3s0}${color} ${color5}${upspeedgraph wlp3s0 10,120 fc8c3b c6396b -t}${color}
+${goto 10}Down Speed:${alignr 10}${color6}${downspeed wlp3s0}${color} ${color5}${downspeedgraph wlp3s0 10,120 fc8c3b c6396b -t}${color}
 ${voffset -5}
 
-${goto 10}Total Up:${goto 80}${color2}${totalup wlp4s0} ${color}${alignr 20}Total Down:${alignr 10}${color2}${totaldown wlp4s0}
+${goto 10}Total Up:${goto 80}${color2}${totalup wlp3s0} ${color}${alignr 20}Total Down:${alignr 10}${color2}${totaldown wlp3s0}
 
 #--------------------------------------------------------------------------------------------------------------------------------
 #                                                   Weather
 #--------------------------------------------------------------------------------------------------------------------------------
 ${color4}${font ConkySymbols:size=14}h${font} Weather» $hr ${color}
-${execi 600 bash $HOME/.conky/SweetDarkConky/accuweather/acc_RSS}
+${execi 600 bash $HOME/.conky/Sweet-Conky-Plasma/accuweather/acc_RSS}
 
-${goto 10}${execpi 600 sed -n '1p' $HOME/.conky/SweetDarkConky/accuweather/weather|cut -c 1-10}${color}
-${font conkyweather:size=30}${execpi 600  sed -n '2p' $HOME/.conky/SweetDarkConky/accuweather/weather}${font}
-${goto 75}${voffset -25}${color2}${execpi 600 sed -n '1p' $HOME/.conky/SweetDarkConky/accuweather/weather|cut -c 12-40}${color}
-${goto 75}${color2}${execpi 600 sed -n '1p' $HOME/.conky/SweetDarkConky/accuweather/weather|cut -c 41-60}${color}
-
-${color4}${goto 10}${stippled_hr}${color}
-
-${goto 10}${execi 600  sed -n '3p' $HOME/.conky/SweetDarkConky/accuweather/weather}
-${font conkyweather:size=30}${execpi 600  sed -n '5p' $HOME/.conky/SweetDarkConky/accuweather/weather}${font}
-${goto 75}${voffset -25}${color2}${execpi 600 sed -n '4p' $HOME/.conky/SweetDarkConky/accuweather/weather|cut -c 1-10}
-${goto 75}${color2}${execpi 600 sed -n '4p' $HOME/.conky/SweetDarkConky/accuweather/weather|cut -c 12-20}${color}
-${goto 75}${color2}${execpi 600 sed -n '4p' $HOME/.conky/SweetDarkConky/accuweather/weather|cut -c 22-60}${color}
+${goto 10}${execpi 600 sed -n '1p' $HOME/.conky/Sweet-Conky-Plasma/accuweather/weather|cut -c 1-10}${color}
+${font conkyweather:size=30}${execpi 600  sed -n '2p' $HOME/.conky/Sweet-Conky-Plasma/accuweather/weather}${font}
+${goto 75}${voffset -25}${color2}${execpi 600 sed -n '1p' $HOME/.conky/Sweet-Conky-Plasma/accuweather/weather|cut -c 12-40}${color}
+${goto 75}${color2}${execpi 600 sed -n '1p' $HOME/.conky/Sweet-Conky-Plasma/accuweather/weather|cut -c 41-60}${color}
 
 ${color4}${goto 10}${stippled_hr}${color}
 
-${goto 10}${execi 600  sed -n '6p' $HOME/.conky/SweetDarkConky/accuweather/weather}
-${font conkyweather:size=30}${execpi 600  sed -n '8p' $HOME/.conky/SweetDarkConky/accuweather/weather}${color2}${font}
-${goto 75}${voffset -25}${color2}${execpi 600 sed -n '7p' $HOME/.conky/SweetDarkConky/accuweather/weather|cut -c 1-10}
-${goto 75}${color2}${execpi 600 sed -n '7p' $HOME/.conky/SweetDarkConky/accuweather/weather|cut -c 11-20}
-${goto 75}${color2}${execpi 600 sed -n '7p' $HOME/.conky/SweetDarkConky/accuweather/weather|cut -c 21-60}${color}
+${goto 10}${execi 600  sed -n '3p' $HOME/.conky/Sweet-Conky-Plasma/accuweather/weather}
+${font conkyweather:size=30}${execpi 600  sed -n '5p' $HOME/.conky/Sweet-Conky-Plasma/accuweather/weather}${font}
+${goto 75}${voffset -25}${color2}${execpi 600 sed -n '4p' $HOME/.conky/Sweet-Conky-Plasma/accuweather/weather|cut -c 1-10}
+${goto 75}${color2}${execpi 600 sed -n '4p' $HOME/.conky/Sweet-Conky-Plasma/accuweather/weather|cut -c 12-20}${color}
+${goto 75}${color2}${execpi 600 sed -n '4p' $HOME/.conky/Sweet-Conky-Plasma/accuweather/weather|cut -c 22-60}${color}
+
+${color4}${goto 10}${stippled_hr}${color}
+
+${goto 10}${execi 600  sed -n '6p' $HOME/.conky/Sweet-Conky-Plasma/accuweather/weather}
+${font conkyweather:size=30}${execpi 600  sed -n '8p' $HOME/.conky/Sweet-Conky-Plasma/accuweather/weather}${color2}${font}
+${goto 75}${voffset -25}${color2}${execpi 600 sed -n '7p' $HOME/.conky/Sweet-Conky-Plasma/accuweather/weather|cut -c 1-10}
+${goto 75}${color2}${execpi 600 sed -n '7p' $HOME/.conky/Sweet-Conky-Plasma/accuweather/weather|cut -c 11-20}
+${goto 75}${color2}${execpi 600 sed -n '7p' $HOME/.conky/Sweet-Conky-Plasma/accuweather/weather|cut -c 21-60}${color}
 
 ${color4}${goto 10}${stippled_hr}${color}
 
